@@ -6,15 +6,15 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const res = await axios.get("http://localhost:5000/tasks");
-    setTasks(res.data);
-  };
+  const res = await axios.get(`${process.env.REACT_APP_API_URL}/tasks`);
+  setTasks(res.data);
+};
 
-  const addTask = async () => {
-    await axios.post("http://localhost:5000/add", { task });
-    setTask("");
-    fetchTasks();
-  };
+ const addTask = async () => {
+  await axios.post(`${process.env.REACT_APP_API_URL}/add`, { task });
+  setTask("");
+  fetchTasks();
+};
 
   useEffect(() => {
     fetchTasks();
